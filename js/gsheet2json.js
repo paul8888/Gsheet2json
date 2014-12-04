@@ -15,7 +15,7 @@ var spreadSheet = (spreadSheet) || function(spreadSheetURL, fields, success) {
     var dataReady = false;
 
     function getKey(spreadSheetURL) {
-        return spreadSheetURL.match(/key=([^&]*)/)[1];
+        return spreadSheetURL.match(/spreadsheets?\/(?:.*\?key=|d\/)([^&\/$]*)/i)[1];;
     }
 
     function generateFields(data) {
@@ -40,7 +40,6 @@ var spreadSheet = (spreadSheet) || function(spreadSheetURL, fields, success) {
 
         script.src = url.replace('callback=?', 'callback=' + ud);
         head.appendChild(script);
-
     }
 
     function callBack(response) {
